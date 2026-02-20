@@ -1,0 +1,40 @@
+# Build directories
+build/
+example/build/
+**/build/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+!cmake/CachedCTest.cmake
+!cmake/MergeTestMetadata.cmake
+
+# CTest generated files
+CTestTestfile.cmake
+Testing/
+
+# Cached CTest metadata and artifacts
+.cached_ctest/
+
+# Compiled binaries
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test executables
+example/tests/test_*
+!example/tests/test_*.cpp
