@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.19)
 project(CachedCTestExample CXX)
 
 # Set C++ standard
@@ -8,12 +8,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Enable testing
 enable_testing()
 
-# Include CachedCTest module
+# Include CachedCTest module.
+# This auto-initializes the cached_ctest system and schedules auto-finalization
+# to run after this CMakeLists.txt finishes processing — no explicit
+# cached_ctest_init() or cached_ctest_finalize() calls are needed.
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/../cmake")
 include(CachedCTest)
-
-# Initialize cached_ctest system
-cached_ctest_init()
 
 # ============================================
 # Libraries
@@ -59,13 +59,6 @@ add_example_test(test_string_concat test_string_concat.cpp string_utils)
 
 # Add integration test (uses both libraries)
 add_example_test(test_integration test_integration.cpp math_utils string_utils)
-
-# ============================================
-# Finalize
-# ============================================
-
-# Finalize cached_ctest (merge metadata, set up dependencies)
-cached_ctest_finalize()
 
 # Print configuration summary
 message(STATUS "")
