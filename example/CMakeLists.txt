@@ -59,17 +59,3 @@ add_example_test(test_string_concat test_string_concat.cpp string_utils)
 
 # Add integration test (uses both libraries)
 add_example_test(test_integration test_integration.cpp math_utils string_utils)
-
-# Print configuration summary
-message(STATUS "")
-message(STATUS "CachedCTest Example Configuration Summary:")
-message(STATUS "  Build type: ${CMAKE_BUILD_TYPE}")
-message(STATUS "  C++ standard: ${CMAKE_CXX_STANDARD}")
-message(STATUS "  Binary directory: ${CMAKE_BINARY_DIR}")
-message(STATUS "  Tests registered: 5")
-message(STATUS "")
-message(STATUS "To build and run tests:")
-message(STATUS "  1. Build:    cmake --build .")
-message(STATUS "  2. Run all:  ../cached_ctest")
-message(STATUS "  3. Rebuild:  cmake --build . && ../cached_ctest")
-message(STATUS "")

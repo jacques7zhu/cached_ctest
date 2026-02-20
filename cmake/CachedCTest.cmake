@@ -114,8 +114,25 @@ function(_cached_ctest_finalize)
         COMMENT "Merging test metadata"
         VERBATIM
     )
+    # Register .cached_ctest/ so that `make clean` / `ninja clean` removes it.
+    set_property(DIRECTORY "${CMAKE_SOURCE_DIR}" APPEND PROPERTY
+        ADDITIONAL_CLEAN_FILES "${_metadata_dir}/tests_metadata.json"
+    )
 
     message(STATUS "CachedCTest: Finalized - anchor updates only after successful test runs")
+
+    message(STATUS "")
+    message(STATUS "CachedCTest Example Configuration Summary:")
+    message(STATUS "  Build type: ${CMAKE_BUILD_TYPE}")
+    message(STATUS "  C++ standard: ${CMAKE_CXX_STANDARD}")
+    message(STATUS "  Binary directory: ${CMAKE_BINARY_DIR}")
+    message(STATUS "  Tests registered: 5")
+    message(STATUS "")
+    message(STATUS "To build and run tests:")
+    message(STATUS "  1. Build:    cmake --build .")
+    message(STATUS "  2. Run all:  ../cached_ctest")
+    message(STATUS "  3. Rebuild:  cmake --build . && ../cached_ctest")
+    message(STATUS "")
 endfunction()
 
 # ============================================================================
