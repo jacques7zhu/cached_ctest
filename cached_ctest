@@ -121,6 +121,7 @@ parse_arguments() {
                 ;;
             -V|--verbose)
                 VERBOSE=1
+                CTEST_ARGS+=("$1")
                 shift
                 ;;
             --dry-run)
@@ -340,7 +341,7 @@ main() {
     echo ""
 
     local exit_code=0
-    ctest -R "${ctest_filter}" ${CTEST_AEGS[@]+"${CTEST_ARGS[@]}"} || exit_code=$?
+    ctest -R "${ctest_filter}" ${CTEST_ARGS[@]+"${CTEST_ARGS[@]}"} || exit_code=$?
 
     # Update anchor if tests passed
     if [[ ${exit_code} -eq 0 ]]; then
